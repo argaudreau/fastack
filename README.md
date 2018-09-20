@@ -2,6 +2,14 @@
 fastack [fa(st) stack] is a web application built using NodeJS and ExpressJS that makes
 starting your next web app easy, fast, and un-intimidating. 
 
+Think of how many times you've started a new web application and had to look at the 
+documentation just to get something running. Once you see the "Hello World!" text pop
+up in your browser, you have to get started on all the other boring features like
+navigation bars, APIs, database connections, you name it. It gets old after a while.
+You're smart enough to put it all together, but no one has the memory to remember
+every single command line parameter or nomenclature to get everything working 100%.
+With fastack, you'll never have to go through that extensive setup process again.
+
 Choose your framework, add the features you need, download the template. Cool!
 
 ## Easy?
