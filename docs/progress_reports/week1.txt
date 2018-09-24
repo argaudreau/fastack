@@ -1,0 +1,12 @@
+Week 1 Progress Report
+(9/18/18 - 9/25/18)
+
+This week was focused on getting a basic app up and running, but more importantly
+putting together a list of requirements for it. The requirements can be found in
+./docs/requirements.txt.
+
+Done this week:
+- Initialize repo
+- Generate basic NodeJS/ExpressJS template
+- Define the problem
+- Create and begin writing list of requirements

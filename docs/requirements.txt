@@ -1,0 +1,46 @@
+========================
+| fastack Requirements |
+========================
+
+* THE PROBLEM *
+Many web applications that are being developed today share a lot of the same features.
+Though the framework/technology stack may differ, it's fairly common to see a web app
+implement an API, user authentication, different template engines, user interfaces,
+and more. For a web developer, this whole process can get very repetitive. Though a
+developer may have implemented a feature before, chances are they'll have to reference
+documentation to get a new instance up and running. This is not only time consuming
+and frustrating, but a general waste of time. No knowledge is gained from doing the
+same setup process over and over again, but more importantly, it hinders the
+development of the features that will make the end product unique and useful.
+
+
+* THE SOLUTION *
+If web developers had a resource where they could choose one of the many frameworks
+available nowadays, add all the features they need, and download a starter template,
+they could get started on developing the features they need to within minutes instead
+of days.
+
+fastack is the solution. fastack is a web application developed in NodeJS that handles
+all the generation of the template files requested by the user. It will be a simple,
+step-by-step type of website that makes it easy to choose the features you need.
+
+
+* IMPLEMENTATION *
+Technology Stack: NodeJS (user-facing content), ExpressJS (to act as the API/
+                  Server-side code), pug (templating engine)
+
+Frameworks/stacks to include for users to pick from, as well as specific features:
+- Angular (probably only v6 onwards, won't have time to deal with versions)
+    - Angular Material
+        - Color for theme
+- AngularJS
+- NodeJS / ExpressJS
+    - Templating engine
+- VueJS
+- ReactJS
+
+Features to include with all stacks:
+- API
+- User Authentication/Provisioning
+- Navigation
+- Sidebar

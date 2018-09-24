@@ -13,7 +13,7 @@ With fastack, you'll never have to go through that extensive setup process again
 Choose your framework, add the features you need, download the template. Cool!
 
 ## Progres Reports
-[Week 1](https://github.com/argaudreau/fastack/tree/master/progress_reports/week1.txt)
+[Week 1](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week1.txt)
 
 ## Easy?
 There isn't much to the application's interface, making it darn near impossible to 
