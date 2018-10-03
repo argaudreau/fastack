@@ -1,0 +1,12 @@
+Week 2 Progress Report
+(9/25/18 - 10/2/18)
+
+This week I put together a document specifying the more technical side
+of the project in regards to creating the stacks. I looked up some of
+the pre-built packages and tools to quickly generate a new project in
+the given framework. From there, I put together some resources to
+begin to derive how to add some of the other features (like user
+provisioning and DB connections) programmatically.
+
+Most of the progress this week was done in ./docs/stacks_cli.txt and
+./docs/stack_diagram.png

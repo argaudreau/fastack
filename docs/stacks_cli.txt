@@ -1,0 +1,53 @@
+PROJECT INIT COMMANDS
+Angular
+- ng new my-app
+- For Angular Material, reference https://material.angular.io/guide/getting-started
+NodeJS / ExpressJS
+- https://expressjs.com/en/starter/generator.html
+- npm install express-generator -g
+    - express --options gohere myapp
+VueJS
+- Use Vue CLI
+- https://cli.vuejs.org/guide/creating-a-project.html
+ReactJS
+- There are three types (see https://reactjs.org/docs/create-a-new-react-app.html), each use different tool
+- Create React App (single-page app)
+- Next.js (server-rendered website with node)
+- Gatsby (static-content oriented site)
+
+API
+Angular
+- Reference here: https://www.sitepoint.com/angular-rxjs-create-api-service-rest-backend/
+NodeJS / ExpressJS
+- Built into express
+VueJS
+- Cannot be done
+ReactJS
+- https://medium.com/@evheniybystrov/full-stack-react-app-from-scratch-part-2-classic-rest-api-b0279bdd8d24
+
+USER PROVISIONING
+Angular
+- Using Okta
+- https://dzone.com/articles/build-an-angular-app-with-user-management-in-15-mins
+NodeJS / ExpressJS
+- PassportJS http://www.passportjs.org/
+    - Supports user/pass, twitter, fb, etc.
+VueJS
+- Use CASL
+- https://medium.com/js-dojo/managing-user-permissions-in-a-vuejs-app-b82f3042e3d1
+ReactJS
+- Use CASL
+- https://medium.com/dailyjs/managing-user-permissions-in-your-react-app-a93a94ff9b40
+
+DB CONNECTION
+Angular
+- Connect via an api, will require api to be setup
+NodeJS / ExpressJS
+-
+VueJS
+
+ReactJS
+
+
+NAVIGATION/SIDEBAR
+- Add this with each view respectively

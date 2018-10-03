@@ -33,7 +33,6 @@ Frameworks/stacks to include for users to pick from, as well as specific feature
 - Angular (probably only v6 onwards, won't have time to deal with versions)
     - Angular Material
         - Color for theme
-- AngularJS
 - NodeJS / ExpressJS
     - Templating engine
 - VueJS
@@ -44,3 +43,4 @@ Features to include with all stacks:
 - User Authentication/Provisioning
 - Navigation
 - Sidebar
+- DB Connection of choice
