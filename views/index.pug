@@ -1,5 +1,6 @@
-extends layout
+extends main
 
 block content
   h1= title
-  p Welcome to #{title}
+  button(id="test-button") Send
+  div(id="output" class="console")

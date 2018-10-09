@@ -1,66 +1,60 @@
 #!/usr/bin/env node
+let app = require('../app');
+let debug = require('debug')('fastack:server');
+let http = require('http');
+let server = http.Server(app);
+let io = require('socket.io')(server);
+let spawn = require('child_process').spawn;
 
-/**
- * Module dependencies.
- */
-
-var app = require('../app');
-var debug = require('debug')('fastack:server');
-var http = require('http');
-
-/**
- * Get port from environment and store in Express.
- */
-
-var port = normalizePort(process.env.PORT || '3000');
+let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-
-var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
 
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-/**
- * Normalize a port into a number, string, or false.
- */
+initSocket();
+
+function initSocket() {
+  io.on('connection', (socket) => {
+      console.log('A user connected');
+      // When the user requests to generate an angular app
+      socket.on('angular generate', function(payload) {
+          if (!payload.app_name) {
+              io.emit('generate error', 'ERROR: No app name specified');
+              return;
+          }
+          // Generate the directory
+          let process = spawn('ng', ['new', payload.app_name], {cwd: './temp'});
+          process.stdout.on('data', (data) => {
+              io.emit('angular generate data', data.toString());
+          });
+          process.stderr.on('data', (data) => {
+              io.emit('angular generate data', data.toString());
+          });
+          process.on('exit', (code) => {
+              io.emit('angular generate data', 'Process exited with code ' + code);
+          });
+      });
+      // When the user disconnects
+      socket.on('disconnect', function() {
+          console.log('A user disconnected');
+      });
+  });
+}
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  let port = parseInt(val, 10);
 
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
+  if (isNaN(port)) { return val; }
+  if (port >= 0) { return port; }
   return false;
 }
 
-/**
- * Event listener for HTTP server "error" event.
- */
-
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+  if (error.syscall !== 'listen') { throw error; }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  let bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -77,14 +71,8 @@ function onError(error) {
   }
 }
 
-/**
- * Event listener for HTTP server "listening" event.
- */
-
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  let addr = server.address();
+  let bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }

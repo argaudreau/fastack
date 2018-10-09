@@ -1,0 +1,15 @@
+.console {
+  max-height: 500px;
+  width: 800px;
+  overflow: auto;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  background-color: #191919;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.console > p {
+  margin: 0;
+  white-space: pre;
+}
