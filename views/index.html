@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="application/javascript" src="javascripts/index.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div>
+      <p>Enter a name for your project</p>
+      <form action="">
+        <input id="name" type="text" title="Name">
+      </form>
+    </div>
+    <div>
+      <p>Select a framework</p>
+      <form action="">
+        <input type="radio" name="framework" value="angular" title="angular"> Angular 6+ <br>
+        <input type="radio" name="framework" value="node" title="angular"> NodeJS / Express <br>
+        <input type="radio" name="framework" value="vue" title="angular"> VueJS <br>
+        <input type="radio" name="framework" value="react" title="angular"> ReactJS <br>
+      </form>
+    </div>
+    <br>
+    <button id="generate-button">Generate</button>
+    <button id="delete-button">Remove</button>
+    <hr>
+    <div id="output" class="console"></div>
+  </body>
+</html>

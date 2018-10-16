@@ -1,0 +1,8 @@
+Week 4 Progress Report
+(10/9/18 - 10/16/18)
+
+Here are some of the things I added this week:
+- Auto scroll to bottom for console output
+- Very basic input validation
+- More form fields
+- Generate zip of generated project, ready for download

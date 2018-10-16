@@ -64,4 +64,5 @@ typings/
 .next
 
 # Custom
-temp/
+/public/temp/
+.DS_Store

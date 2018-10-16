@@ -5,6 +5,9 @@ let http = require('http');
 let server = http.Server(app);
 let io = require('socket.io')(server);
 let spawn = require('child_process').spawn;
+let fs = require('fs');
+let archiver = require('archiver');
+let rimraf = require('rimraf');
 
 let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -19,28 +22,57 @@ function initSocket() {
   io.on('connection', (socket) => {
       console.log('A user connected');
       // When the user requests to generate an angular app
-      socket.on('angular generate', function(payload) {
-          if (!payload.app_name) {
-              io.emit('generate error', 'ERROR: No app name specified');
-              return;
-          }
-          // Generate the directory
-          let process = spawn('ng', ['new', payload.app_name], {cwd: './temp'});
-          process.stdout.on('data', (data) => {
-              io.emit('angular generate data', data.toString());
-          });
-          process.stderr.on('data', (data) => {
-              io.emit('angular generate data', data.toString());
-          });
-          process.on('exit', (code) => {
-              io.emit('angular generate data', 'Process exited with code ' + code);
-          });
-      });
+      socket.on('angular generate', function(payload) { generateAppAngular(payload) });
+      // Delete files
+      socket.on('files remove', function(payload) { removeFiles(payload) });
       // When the user disconnects
       socket.on('disconnect', function() {
           console.log('A user disconnected');
       });
   });
+}
+
+function generateAppAngular(payload) {
+    if (!payload.app_name) {
+        io.emit('generate error', 'ERROR: No app name specified');
+        return;
+    }
+    // Generate the directory
+    let process = spawn('ng', ['new', payload.app_name], {cwd: './public/temp'});
+    process.stdout.on('data', (data) => {
+        io.emit('angular generate data', data.toString());
+    });
+    process.stderr.on('data', (data) => {
+        io.emit('angular generate data', data.toString());
+    });
+    process.on('exit', (code) => {
+        io.emit('angular generate data', 'Process exited with code ' + code);
+        // Document has been generated, zip archive and provide download link
+        zipArchive(payload.app_name);
+    });
+}
+
+function zipArchive(name) {
+    let output = fs.createWriteStream('./public/temp/' + name + '.zip');
+    let archive = archiver('zip', { zlib: { level: 9 } });
+
+    output.on('close', function() {
+        io.emit('angular generate data', 'Zip file is ready for download!');
+    });
+
+    archive.pipe(output);
+
+    archive.directory('./public/temp/' + name, name);
+    archive.finalize();
+}
+
+function removeFiles(payload) {
+    console.log('Removing files', payload.name, payload.name + '.zip');
+    rimraf('./public/temp/' + payload.name, function() {
+        rimraf('./public/temp/' + payload.name + '.zip', function() {
+            console.log('Done deleting');
+        });
+    });
 }
 
 function normalizePort(val) {
