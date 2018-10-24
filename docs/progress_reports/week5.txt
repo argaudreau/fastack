@@ -1,0 +1,7 @@
+Week 4 Progress Report
+(10/16/18 - 10/23/18)
+
+This week had a bigger focus on UI/UX. I started to improve some
+of the styling across the site so as I add features, I can make
+them look good too. Next week will have a greater focus on
+adding some features.

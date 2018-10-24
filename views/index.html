@@ -8,14 +8,20 @@
     <script type="application/javascript" src="javascripts/index.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <div>
+    <div class="header">
+      <div class="header-content">
+        <img class="header-image" src="images/full_logo.png">
+        <h3 class="header-slogan">Skip the setup. Get right to the fun part.</h3>
+        <button class="btn btn-center">begin</button>
+        <img class="header-down-arrow" src="images/arrow-down-2-icon.gif">
+      </div>
+    </div>
+    <div class="step">
+      <h1>Step 1</h1>
       <p>Enter a name for your project</p>
       <form action="">
         <input id="name" type="text" title="Name">
       </form>
-    </div>
-    <div>
       <p>Select a framework</p>
       <form action="">
         <input type="radio" name="framework" value="angular" title="angular"> Angular 6+ <br>
@@ -24,10 +30,11 @@
         <input type="radio" name="framework" value="react" title="angular"> ReactJS <br>
       </form>
     </div>
-    <br>
-    <button id="generate-button">Generate</button>
-    <button id="delete-button">Remove</button>
-    <hr>
-    <div id="output" class="console"></div>
+    <div class="step">
+      <h1>Final Step</h1>
+      <button id="generate-button" class="btn">generate</button>
+      <button id="delete-button" class="btn">remove</button>
+      <div id="output" class="console"></div>
+    </div>
   </body>
 </html>

@@ -22,6 +22,7 @@ function initScrollToBottom() {
 }
 
 function generate() {
+    $('#output').empty();
     let name = $('#name').val();
     let framework = $('input:radio[name ="framework"]:checked').val();
     if (name && framework) socket.emit(framework + ' generate', { app_name: name });
