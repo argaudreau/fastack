@@ -16,6 +16,7 @@ Choose your framework, add the features you need, download the template. Cool!
 * [Week 1](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week1.txt)
 * [Week 2](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week2.txt)
 * [Week 3](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week3.txt)
+* [Week 4](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week4.txt)
 
 ## Easy?
 There isn't much to the application's interface, making it darn near impossible to 
