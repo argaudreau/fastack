@@ -1,0 +1,8 @@
+Week 6 Progress Report
+(10/23/18 - 10/30/18)
+
+This week I made more changes to the UI, including:
+- Styled form fields and input controls
+- Added background images
+- Smooth step by step scrolling
+- Download buttons available when process completes

@@ -3,38 +3,82 @@
   <head>
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="application/javascript" src="/socket.io/socket.io.js"></script>
     <script type="application/javascript" src="javascripts/index.js"></script>
   </head>
   <body>
-    <div class="header">
+    <div id="step0" class="header">
       <div class="header-content">
         <img class="header-image" src="images/full_logo.png">
-        <h3 class="header-slogan">Skip the setup. Get right to the fun part.</h3>
-        <button class="btn btn-center">begin</button>
-        <img class="header-down-arrow" src="images/arrow-down-2-icon.gif">
+        <h3 class="header-slogan">Skip the CLI and docs. Get your next app started in a few clicks.</h3>
+        <button id="button-begin" class="btn btn-center">begin</button>
+        <div class="down-hint-container">
+          <span id="down-hint" class="fas fa-chevron-down"></span>
+        </div>
       </div>
     </div>
-    <div class="step">
-      <h1>Step 1</h1>
-      <p>Enter a name for your project</p>
-      <form action="">
-        <input id="name" type="text" title="Name">
-      </form>
-      <p>Select a framework</p>
-      <form action="">
-        <input type="radio" name="framework" value="angular" title="angular"> Angular 6+ <br>
-        <input type="radio" name="framework" value="node" title="angular"> NodeJS / Express <br>
-        <input type="radio" name="framework" value="vue" title="angular"> VueJS <br>
-        <input type="radio" name="framework" value="react" title="angular"> ReactJS <br>
-      </form>
+    <div id="step1" class="step">
+      <div class="card">
+        <h1>Let's get started</h1>
+        <p><b>Enter a name for your project</b> (max 20 characters)</p>
+        <form action="">
+          <input id="name" type="text" title="Name" placeholder="Name" maxlength="20" style="width: 96%;">
+        </form>
+        <p><b>Select a framework</b></p>
+        <form action="" class="framework-group">
+          <div class="framework-group-option">
+            <img class="framework-image" src="images/angular.png"><br>
+            Angular 6+<br>
+            <input type="radio" name="framework" value="angular" title="angular">
+          </div>
+          <div class="framework-group-option">
+            <img class="framework-image" src="images/nodejs.jpg"><br>
+            NodeJS / Express <br>
+            <input type="radio" name="framework" value="node" title="node">
+          </div>
+          <div class="framework-group-option">
+            <img class="framework-image" src="images/react.png"><br>
+            ReactJS <br>
+            <input type="radio" name="framework" value="react" title="react">
+          </div>
+          <div class="framework-group-option">
+            <img class="framework-image" src="images/vue-js.png"><br>
+            VueJS <br>
+            <input type="radio" name="framework" value="vue" title="vue">
+          </div>
+        </form>
+        <button id="button-step1-next" class="btn btn-center">next</button>
+      </div>
     </div>
-    <div class="step">
-      <h1>Final Step</h1>
-      <button id="generate-button" class="btn">generate</button>
-      <button id="delete-button" class="btn">remove</button>
-      <div id="output" class="console"></div>
+    <div id="step2" class="step">
+      <div class="card">
+        <h1>Add features</h1>
+        <div class="btn-group-center">
+          <button id="button-step2-back" class="btn">back</button>
+          <button id="button-step2-next" class="btn">next</button>
+        </div>
+      </div>
+    </div>
+    <div id="step3" class="step">
+      <div class="card">
+        <h1>Generate & Download</h1>
+        <div class="btn-group-center">
+          <button id="button-step3-back" class="btn">back</button>
+          <button id="generate-button" class="btn">generate</button>
+        </div>
+        <p><i id="console-spinner" class="fas fa-sync"></i> <span id="status">Waiting for generation request...</span></p>
+        <div id="output" class="console">
+          <p>***********************************************************************************</p>
+          <p>*This is the console output for the behind-the-scenes work of generating your app!*</p>
+          <p>*      Once options are configured to your liking, click 'generate' to start!     *</p>
+          <p>***********************************************************************************</p>
+        </div>
+        <div class="btn-group-center">
+          <button id="download" class="btn" disabled>download</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
