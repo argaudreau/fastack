@@ -1,6 +1,8 @@
 Week 3 Progress Report
 (10/2/18 - 10/9/18)
 
+VIEW WEEK 3 PROGRESS ON GITHUB: https://github.com/argaudreau/fastack/tree/b78235a3843fa1a1883a60ae935ed33e232247bd
+
 This week's work was more focused on the technical aspect of
 the app. I was able to implement sockets (via socket.io)
 which is almost like an API except it sends back real-time

@@ -1,6 +1,8 @@
 Week 4 Progress Report
 (10/16/18 - 10/23/18)
 
+VIEW WEEK 5 PROGRESS ON GITHUB: https://github.com/argaudreau/fastack/tree/6beb176e7b7814191c71e22753465d2fc7dd704a
+
 This week had a bigger focus on UI/UX. I started to improve some
 of the styling across the site so as I add features, I can make
 them look good too. Next week will have a greater focus on

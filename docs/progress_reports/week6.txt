@@ -1,6 +1,8 @@
 Week 6 Progress Report
 (10/23/18 - 10/30/18)
 
+VIEW WEEK 6 PROGRESS ON GITHUB: https://github.com/argaudreau/fastack/tree/a0709c7799fd3a2d1fece1a1739df60b826087de
+
 This week I made more changes to the UI, including:
 - Styled form fields and input controls
 - Added background images

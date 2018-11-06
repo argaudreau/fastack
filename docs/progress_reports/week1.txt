@@ -1,6 +1,8 @@
 Week 1 Progress Report
 (9/18/18 - 9/25/18)
 
+VIEW WEEK 1 PROGRESS ON GITHUB: https://github.com/argaudreau/fastack/tree/ac6e6830ffc3881a10805021891f5814860d6a23
+
 This week was focused on getting a basic app up and running, but more importantly
 putting together a list of requirements for it. The requirements can be found in
 ./docs/requirements.txt.

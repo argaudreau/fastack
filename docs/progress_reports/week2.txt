@@ -1,6 +1,8 @@
 Week 2 Progress Report
 (9/25/18 - 10/2/18)
 
+VIEW WEEK 2 PROGRESS ON GITHUB: https://github.com/argaudreau/fastack/tree/08fc7fce809c760e34ef127fba47bbbd14b956e5
+
 This week I put together a document specifying the more technical side
 of the project in regards to creating the stacks. I looked up some of
 the pre-built packages and tools to quickly generate a new project in

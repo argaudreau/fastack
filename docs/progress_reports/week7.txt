@@ -1,0 +1,28 @@
+Week 7 Progress Report
+(10/30/18 - 11/6/18)
+
+I've added some clarifying materials to help clarify the progress
+I've made over the past weeks. In the readme, there are now links
+to the GitHub archives of my repo to show what it looked like at
+any given week. You may look at the diffs there to see exactly what
+changed if needed. Otherwise, I try to explain everything I added
+clearly in the progress reports.
+
+Here's what I did this week:
+- Worked on minor UI fixes here and there for more readability and
+  ease of use.
+- Got fastack working on WebLab (see README)
+- fastack now supports all the frameworks it advertises. This means
+  you can now generate apps in Angular, Node, React, and Vue.
+- Cleaned up the code in the backend so each framework is generated
+  using the same methods, so there's less repetition.
+
+There were no huge issues this week for me, everything worked pretty
+much as intended. The hardest part was working with the frameworks
+I've never worked with before (React and Vue). Though I haven't used
+them yet, they are popular so I still wanted to have those provided.
+
+Next week I'll focus on adding some features to each app that's
+generated. This will take a bit or research first because each
+framework has different ways of implementing the same features, and
+some features are available in one while they aren't in others.

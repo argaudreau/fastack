@@ -12,11 +12,20 @@ With fastack, you'll never have to go through that extensive setup process again
 
 Choose your framework, add the features you need, download the template. Cool!
 
-## Progres Reports
-* [Week 1](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week1.txt)
-* [Week 2](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week2.txt)
-* [Week 3](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week3.txt)
-* [Week 4](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week4.txt)
+## WebLab Link
+Please click [HERE](http://weblab.cs.uml.edu:3003) to view the project live on WebLab. If it is
+not running, or it is throwing an error, email me at adam_gaudreau AT student DOT uml DOT edu.
+
+## Progress Reports
+Click the week to view the progress report document. Click the archive link to view the repo as it
+appeared at that given week. The Diff view in GitHub will show exactly what was added/removed.
+* [Week 1](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week1.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/ac6e6830ffc3881a10805021891f5814860d6a23)
+* [Week 2](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week2.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/08fc7fce809c760e34ef127fba47bbbd14b956e5)
+* [Week 3](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week3.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/b78235a3843fa1a1883a60ae935ed33e232247bd)
+* [Week 4](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week4.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/71b22ed56422c3e6c6f6ad9071933acb3f09f300)
+* [Week 5](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week5.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/6beb176e7b7814191c71e22753465d2fc7dd704a)
+* [Week 6](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week6.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/a0709c7799fd3a2d1fece1a1739df60b826087de)
+* [Week 7](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week7.txt) | (current master branch)
 
 ## Easy?
 There isn't much to the application's interface, making it darn near impossible to 

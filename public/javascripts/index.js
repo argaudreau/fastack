@@ -9,13 +9,17 @@ $(document).ready(function() {
 });
 
 function initSockets() {
-    socket.on('angular generate data', function(payload) {
+    socket.on('generate data', function(payload) {
         switch(payload.type) {
             case 'data':
                 $('#output').append('<p>' + payload.data + '</p>');
                 break;
             case 'error':
                 $('#output').append('<p style="color: red">' + payload.data + '</p>');
+                $('#status').html('Could not generate app, see below.');
+                $('#console-icon').removeClass('fa-sync');
+                $('#console-icon').removeClass('console-spinner');
+                $('#console-icon').addClass('fa-times');
                 break;
             case 'done':
                 let style = "";
@@ -24,11 +28,17 @@ function initSockets() {
                 break;
             case 'zip_start':
                 $('#output').append('<p>Generation completed, directory is being zipped.</p>');
+                $('#status').html('App was generated! Ziping directory...');
                 break;
             case 'zip_done':
                 $('#output').append('<p>Done! Download the file below.</p>');
                 $('#download').removeAttr('disabled');
+                $('#generate-button').attr('disabled', true);
                 $('#download').click(function() { window.location = payload.link; });
+                $('#status').html('All done! Download your app below.');
+                $('#console-icon').removeClass('fa-sync');
+                $('#console-icon').removeClass('console-spinner');
+                $('#console-icon').addClass('fa-check');
                 break;
         }
     });
@@ -90,6 +100,8 @@ function initAnimations() {
 
 function generate() {
     $('#output').empty();
+    $('#status').html('Generating your application...');
+    $('#console-icon').addClass('console-spinner');
     let name = $('#name').val();
     let framework = $('input:radio[name ="framework"]:checked').val();
     if (name && framework) socket.emit(framework + ' generate', { app_name: name });

@@ -1,6 +1,8 @@
 Week 4 Progress Report
 (10/9/18 - 10/16/18)
 
+VIEW WEEK 4 PROGRESS ON GITHUB: https://github.com/argaudreau/fastack/tree/71b22ed56422c3e6c6f6ad9071933acb3f09f300
+
 Here are some of the things I added this week:
 - Auto scroll to bottom for console output
 - Very basic input validation

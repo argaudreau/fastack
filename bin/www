@@ -9,10 +9,11 @@ let fs = require('fs');
 let archiver = require('archiver');
 let rimraf = require('rimraf');
 
+let host = process.env.HOST || 'localhost';
 let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-server.listen(port);
+server.listen(port, host);
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -22,32 +23,39 @@ function initSocket() {
   io.on('connection', (socket) => {
       console.log('A user connected');
       // When the user requests to generate an angular app
-      socket.on('angular generate', function(payload) { generateAppAngular(payload) });
-
+      socket.on('angular generate', function(payload) { generateApp('angular', payload) });
+      // When the user requests to generate a node app
+      socket.on('node generate', function(payload) { generateApp('node', payload) });
+      // When the user requests to generate a node app
+      socket.on('react generate', function(payload) { generateApp('react', payload) });
+      // When the user requests to generate a node app
+      socket.on('vue generate', function(payload) { generateApp('vue', payload) });
       // When the user disconnects
-      socket.on('disconnect', function() {
-          console.log('A user disconnected');
-      });
+      socket.on('disconnect', function() { console.log('A user disconnected') });
   });
 }
 
-function generateAppAngular(payload) {
+function generateApp(type, payload) {
     if (!payload.app_name) {
         io.emit('generate error', 'ERROR: No app name specified');
         return;
     }
     // Generate the directory
-    let process = spawn('ng', ['new', payload.app_name, '--skip-install'], {cwd: './public/temp'});
+    let process;
+    if (type === 'angular') process = spawn('ng', ['new', payload.app_name, '--skip-install'], {cwd: './public/temp'});
+    if (type === 'node') process = spawn('express', [payload.app_name], {cwd: './public/temp'});
+    if (type === 'react') process = spawn('npx', ['create-react-app', payload.app_name], {cwd: './public/temp'});
+    if (type === 'vue') process = spawn('npx', ['vue', 'create', payload.app_name, '-d'], {cwd: './public/temp'});
     process.stdout.on('data', (data) => {
-        io.emit('angular generate data', { type: 'data', data: data.toString() });
+        io.emit('generate data', { type: 'data', data: data.toString() });
     });
     process.stderr.on('data', (data) => {
-        io.emit('angular generate data', { type: 'error', data: data.toString() });
+        io.emit('generate data', { type: 'error', data: data.toString() });
     });
     process.on('exit', (code) => {
-        io.emit('angular generate data', { type: 'done', data: 'Process exited with code ' + code, code: code });
+        io.emit('generate data', { type: 'done', data: 'Process exited with code ' + code, code: code });
         // Document has been generated, zip archive and provide download link
-        if (code === 0) zipArchive(payload.app_name, 'angular generate data');
+        if (code === 0) zipArchive(payload.app_name, 'generate data');
     });
 }
 
