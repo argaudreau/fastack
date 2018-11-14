@@ -25,7 +25,9 @@ appeared at that given week. The Diff view in GitHub will show exactly what was 
 * [Week 4](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week4.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/71b22ed56422c3e6c6f6ad9071933acb3f09f300)
 * [Week 5](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week5.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/6beb176e7b7814191c71e22753465d2fc7dd704a)
 * [Week 6](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week6.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/a0709c7799fd3a2d1fece1a1739df60b826087de)
-* [Week 7](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week7.txt) | (current master branch)
+* [Week 7](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week7.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/b09845cfe0058f64216654e4be4515a84c75c53f)
+* [Week 8](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week8.txt) | (current master branch)
+
 
 ## Easy?
 There isn't much to the application's interface, making it darn near impossible to 

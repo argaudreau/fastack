@@ -1,0 +1,9 @@
+Week 8 Progress Report
+(11/6/18 - 11/13/18)
+
+This week I started to implement the add features section.
+This will allow users more control over the projects that
+are generated, so they don't have to stick to the defaults
+if they don't want to. This week I was able to add features
+and configuration settings for Angular, Node, and Vue.
+React will come soon but I ran out of time this week.

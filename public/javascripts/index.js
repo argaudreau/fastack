@@ -12,6 +12,9 @@ function initSockets() {
     socket.on('generate data', function(payload) {
         switch(payload.type) {
             case 'data':
+                $('#console-icon').addClass('fa-sync');
+                $('#console-icon').removeClass('console-spinner');
+                $('#console-icon').removeClass('fa-times');
                 $('#output').append('<p>' + payload.data + '</p>');
                 break;
             case 'error':
@@ -70,7 +73,11 @@ function initAnimations() {
     $('#step3').hide();
     // Button on clicks
     $('#button-begin').click(function() { animateScroll('#step1'); });
-    $('#button-step1-next').click(function() { animateScroll('#step2'); });
+    $('#button-step1-next').click(function() {
+        let framework = $('input:radio[name ="framework"]:checked').val();
+        showFeatures(framework);
+        animateScroll('#step2');
+    });
     $('#button-step2-back').click(function() { animateScroll('#step1') });
     $('#button-step2-next').click(function() { animateScroll('#step3') });
     $('#button-step3-back').click(function() { animateScroll('#step2') });
@@ -98,11 +105,104 @@ function initAnimations() {
     }
 }
 
+function showFeatures(framework) {
+    $('#features').empty();
+    switch (framework) {
+        case 'angular':
+            $('#features').append(
+                '<form> \
+                    <input id="no-tests" type="checkbox"> No testing frameworks <br>\
+                    <input id="routing" type="checkbox"> Generate routing module <br>\
+                    <input id="skip-spec" type="checkbox"> Skip creation of test (spec) files <br>\
+                </form>');
+            break;
+        case 'node':
+            $('#features').append(
+                '<form> \
+                    <b>hogan.js engine support</b> <br> \
+                    <input type="radio" name="hogan" value="yes"> yes \
+                    <input type="radio" name="hogan" value="no" checked> no <br>\
+                    <b>View engine</b> <br>\
+                    <input type="radio" name="view" value="none"> none \
+                    <input type="radio" name="view" value="ejs"> ejs \
+                    <input type="radio" name="view" value="hbs"> hbs \
+                    <input type="radio" name="view" value="hjs"> hjs \
+                    <input type="radio" name="view" value="jade" checked> jade \
+                    <input type="radio" name="view" value="pug"> pug \
+                    <input type="radio" name="view" value="twig"> twig \
+                    <input type="radio" name="view" value="vash"> vash <br>\
+                </form>');
+            break;
+        case 'react':
+            $('#features').append('<p>react</p>');
+            break;
+        case 'vue':
+            /*
+             -i [insert json here]
+             {
+                  "useConfigFiles": true,
+                  "router": true,
+                  "vuex": true,
+                  "cssPreprocessor": "sass",
+                  "plugins": {
+                    "@vue/cli-plugin-babel": {},
+                    "@vue/cli-plugin-eslint": {
+                      "config": "airbnb",
+                      "lintOn": ["save", "commit"]
+                    }
+                  }
+                }
+            * */
+            $('#features').append(
+                '<form> \
+                    <b>Configuration</b> <br>\
+                    <input id="defaults" type="checkbox"> Use defaults <br> \
+                    <input id="configFiles" type="checkbox"> Use configuration Files <br> \
+                    <input id="routing-plugin" type="checkbox"> Add routing plugin <br> \
+                    <input id="vuex-plugin" type="checkbox"> Add Vuex plugin <br> \
+                </form>');
+            break;
+    }
+}
+
+function getFeatures(framework) {
+    switch (framework) {
+        case 'angular':
+            return {
+                no_test: $('#no-tests').prop('checked'),
+                routing: $('#routing').prop('checked'),
+                skip_spec: $('#skip-spec').prop('checked')
+            };
+        case 'node':
+            return {
+                hogan: $('input:radio[name="hogan"]:checked').val(),
+                view: $('input:radio[name="view"]:checked').val()
+            };
+        case 'react':
+            return {
+
+            };
+        case 'vue':
+            if ($('#defaults').prop('checked')) {
+                return {};
+            } else {
+                return {
+                    preset: {
+                        "useConfigFiles": $('#configFiles').prop('checked'),
+                        "router": $('#routing-plugin').prop('checked'),
+                        "vuex": $('#vuex-plugin').prop('checked'),
+                    }
+                };
+            }
+    }
+}
+
 function generate() {
     $('#output').empty();
     $('#status').html('Generating your application...');
     $('#console-icon').addClass('console-spinner');
     let name = $('#name').val();
     let framework = $('input:radio[name ="framework"]:checked').val();
-    if (name && framework) socket.emit(framework + ' generate', { app_name: name });
+    let features = getFeatures(framework);
+    if (name && framework) socket.emit(framework + ' generate', { app_name: name, features: features });
 }

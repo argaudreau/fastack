@@ -41,11 +41,35 @@ function generateApp(type, payload) {
         return;
     }
     // Generate the directory
-    let process;
-    if (type === 'angular') process = spawn('ng', ['new', payload.app_name, '--skip-install'], {cwd: './public/temp'});
-    if (type === 'node') process = spawn('express', [payload.app_name], {cwd: './public/temp'});
-    if (type === 'react') process = spawn('npx', ['create-react-app', payload.app_name], {cwd: './public/temp'});
-    if (type === 'vue') process = spawn('npx', ['vue', 'create', payload.app_name, '-d'], {cwd: './public/temp'});
+    let process, params = [];
+    switch (type) {
+        case 'angular':
+            params = ['new', payload.app_name, '--skip-install'];
+            if (payload.features.no_test) params.push('--minimal=true');
+            if (payload.features.routing) params.push('--routing=true');
+            if (payload.features.skip_spec) params.push('--skipTests=true');
+            process = spawn('ng', params, {cwd: './public/temp'});
+            break;
+        case 'node':
+            params = [payload.app_name];
+            if (payload.features.hogan === 'yes') params.push('--hogan');
+            if (payload.features.view === 'none') params.push('--no-view');
+            else params.push('--view=' + payload.features.view);
+            process = spawn('express', params, {cwd: './public/temp'});
+            break;
+        case 'react':
+            params = ['create-react-app', payload.app_name];
+            process = spawn('npx', params, {cwd: './public/temp'});
+            break;
+        case 'vue':
+            params = ['vue', 'create', payload.app_name, '-d'];
+            if (payload.features.preset) {
+                params.push('-i');
+                params.push(payload.features.preset);
+            }
+            process = spawn('npx', params, {cwd: './public/temp'});
+            break;
+    }
     process.stdout.on('data', (data) => {
         io.emit('generate data', { type: 'data', data: data.toString() });
     });
