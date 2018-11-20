@@ -1,0 +1,22 @@
+Week 9 Progress Report
+(11/13/18 - 11/20/18)
+
+This week I spent a majority of the time adding the angular material
+option to angular. This was way bigger of a task than I thought it'd
+be, which has caused me to change the expected outcome of this app.
+
+Unfortunately I don't think it will be reaching it's full potential
+as I had envisioned from the beginning. I have the basic platform to
+do everything I had wanted to, but adding each individual feature to
+every framework is going to take a lot longer than part-time, semester's
+long worth of work with a single developer could do.
+
+That all being said, I think my work will still show as a proof of
+concept that what I wanted to do from the beginning can be
+accomplished with the platform I've been building, given there's more
+time and effort dedicated towards completing it.
+
+For next week, I think I'll be tidying up the user interface a bit more
+so it's harder for user to break the app. This will include input validation,
+as well as an automated cron job that will delete files in the temp directory
+after they've reached a certain age.

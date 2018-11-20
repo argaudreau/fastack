@@ -181,3 +181,7 @@ input:focus {
   margin: 0;
   white-space: pre;
 }
+
+.indent {
+  margin-left: 10px;
+}

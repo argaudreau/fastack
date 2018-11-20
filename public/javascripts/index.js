@@ -111,9 +111,12 @@ function showFeatures(framework) {
         case 'angular':
             $('#features').append(
                 '<form> \
-                    <input id="no-tests" type="checkbox"> No testing frameworks <br>\
-                    <input id="routing" type="checkbox"> Generate routing module <br>\
-                    <input id="skip-spec" type="checkbox"> Skip creation of test (spec) files <br>\
+                    <b>Configuration</b><br> \
+                    <input id="routing" type="checkbox"> Generate routing module <br> \
+                    <input id="no-tests" type="checkbox"> No testing frameworks <br> \
+                    <input id="skip-spec" type="checkbox"> Skip creation of test (*.spec) files <br> \
+                    <b>Features</b><br> \
+                    <input id="ng-material" type="checkbox"> Angular Material <br> \
                 </form>');
             break;
         case 'node':
@@ -121,8 +124,8 @@ function showFeatures(framework) {
                 '<form> \
                     <b>hogan.js engine support</b> <br> \
                     <input type="radio" name="hogan" value="yes"> yes \
-                    <input type="radio" name="hogan" value="no" checked> no <br>\
-                    <b>View engine</b> <br>\
+                    <input type="radio" name="hogan" value="no" checked> no <br> \
+                    <b>View engine</b> <br> \
                     <input type="radio" name="view" value="none"> none \
                     <input type="radio" name="view" value="ejs"> ejs \
                     <input type="radio" name="view" value="hbs"> hbs \
@@ -130,29 +133,14 @@ function showFeatures(framework) {
                     <input type="radio" name="view" value="jade" checked> jade \
                     <input type="radio" name="view" value="pug"> pug \
                     <input type="radio" name="view" value="twig"> twig \
-                    <input type="radio" name="view" value="vash"> vash <br>\
+                    <input type="radio" name="view" value="vash"> vash <br> \
+                    <b>Features</b><br> \
                 </form>');
             break;
         case 'react':
             $('#features').append('<p>react</p>');
             break;
         case 'vue':
-            /*
-             -i [insert json here]
-             {
-                  "useConfigFiles": true,
-                  "router": true,
-                  "vuex": true,
-                  "cssPreprocessor": "sass",
-                  "plugins": {
-                    "@vue/cli-plugin-babel": {},
-                    "@vue/cli-plugin-eslint": {
-                      "config": "airbnb",
-                      "lintOn": ["save", "commit"]
-                    }
-                  }
-                }
-            * */
             $('#features').append(
                 '<form> \
                     <b>Configuration</b> <br>\
@@ -160,6 +148,7 @@ function showFeatures(framework) {
                     <input id="configFiles" type="checkbox"> Use configuration Files <br> \
                     <input id="routing-plugin" type="checkbox"> Add routing plugin <br> \
                     <input id="vuex-plugin" type="checkbox"> Add Vuex plugin <br> \
+                    <b>Features</b><br> \
                 </form>');
             break;
     }
@@ -171,7 +160,8 @@ function getFeatures(framework) {
             return {
                 no_test: $('#no-tests').prop('checked'),
                 routing: $('#routing').prop('checked'),
-                skip_spec: $('#skip-spec').prop('checked')
+                skip_spec: $('#skip-spec').prop('checked'),
+                ng_material: $('#ng-material').prop('checked')
             };
         case 'node':
             return {

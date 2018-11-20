@@ -9,6 +9,8 @@ let fs = require('fs');
 let archiver = require('archiver');
 let rimraf = require('rimraf');
 
+const CONSOLE_BREAK = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~';
+
 let host = process.env.HOST || 'localhost';
 let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -78,12 +80,63 @@ function generateApp(type, payload) {
     });
     process.on('exit', (code) => {
         io.emit('generate data', { type: 'done', data: 'Process exited with code ' + code, code: code });
+        if (code !== 0) return;
+        // If the params aren't empty, we want to do more before we zip the archive
+        switch (type) {
+            case 'angular':
+                if (payload.features.ng_material) {
+                    let data, index;
+                    emitLineBreak();
+                    io.emit('generate data', { type: 'data', data: 'Now adding angular material components' });
+                    // Add required node packages to package.json
+                    io.emit('generate data', { type: 'data', data: '> Adding required node packages...' });
+                    data = fs.readFileSync('./public/temp/' + payload.app_name + '/package.json').toString();
+                    index = data.indexOf('"dependencies": {\n') + '"dependencies": {\n'.length;
+                    data = data.substr(0, index) +
+                        '    "@angular/material": "^6.4.5",\n    "@angular/cdk": "^6.4.1",\n    "@angular/animations": "^6.1.0",\n    "hammerjs": "^2.0.8",\n' +
+                        data.substr(index);
+                    fs.writeFileSync('./public/temp/' + payload.app_name + '/package.json', data);
+                    // Configure animations
+                    io.emit('generate data', { type: 'data', data: '> Configuring animations...' });
+                    data = fs.readFileSync('./public/temp/' + payload.app_name + '/src/app/app.module.ts').toString();
+                    data = 'import { BrowserAnimationsModule } from \'@angular/platform-browser/animations\';\n' + data.substr(0);
+                    index = data.lastIndexOf('BrowserModule') + 'BrowserModule'.length;
+                    data = data.substr(0, index) + ',\n    BrowserAnimationsModule' + data.substr(index);
+                    fs.writeFileSync('./public/temp/' + payload.app_name + '/src/app/app.module.ts', data);
+                    // Include a theme
+                    io.emit('generate data', { type: 'data', data: '> Adding default theme...' });
+                    fs.writeFileSync('./public/temp/' + payload.app_name + '/src/styles.css', '@import "~@angular/material/prebuilt-themes/indigo-pink.css";\n');
+                    // Add material icons
+                    io.emit('generate data', { type: 'data', data: '> Adding material icons...' });
+                    data = fs.readFileSync('./public/temp/' + payload.app_name + '/src/index.html').toString();
+                    index = data.indexOf('<link rel="icon" type="image/x-icon" href="favicon.ico">\n') + '<link rel="icon" type="image/x-icon" href="favicon.ico">\n'.length;
+                    data = data.substr(0, index) +
+                        '  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">\n' +
+                        data.substr(index);
+                    fs.writeFileSync('./public/temp/' + payload.app_name + '/src/index.html', data);
+                    // Done, zip
+                    zipArchive(payload.app_name, 'generate data');
+                }
+                break;
+            case 'node':
+                zipArchive(payload.app_name, 'generate data');
+                break;
+            case 'react':
+                zipArchive(payload.app_name, 'generate data');
+                break;
+            case 'vue':
+                zipArchive(payload.app_name, 'generate data');
+                break;
+            default:
+                zipArchive(payload.app_name, 'generate data');
+                break;
+        }
         // Document has been generated, zip archive and provide download link
-        if (code === 0) zipArchive(payload.app_name, 'generate data');
     });
 }
 
 function zipArchive(name, source) {
+    emitLineBreak();
     let output = fs.createWriteStream('./public/temp/' + name + '.zip');
     let archive = archiver('zip', { zlib: { level: 9 } });
 
@@ -91,6 +144,7 @@ function zipArchive(name, source) {
     output.on('close', function() {
         let link = 'temp/' + name + '.zip';
         io.emit(source, { type: 'zip_done', data: 'Zip file is ready for download!', link: link});
+        // TODO show hints here
     });
 
     archive.pipe(output);
@@ -98,6 +152,8 @@ function zipArchive(name, source) {
     archive.directory('./public/temp/' + name, name);
     archive.finalize();
 }
+
+function emitLineBreak() { io.emit('generate data', { type: 'data', data: CONSOLE_BREAK }); }
 
 function removeFiles(payload) {
     console.log('Removing files', payload.name, payload.name + '.zip');

@@ -6,6 +6,11 @@
     "start": "nodemon ./bin/www --ignore '/temp/*'"
   },
   "dependencies": {
+    "@angular/animations": "^7.0.4",
+    "@angular/cdk": "^7.0.4",
+    "@angular/common": "^7.0.4",
+    "@angular/core": "^7.0.4",
+    "@angular/material": "^7.0.4",
     "@vue/cli": "^3.1.1",
     "archiver": "^3.0.0",
     "child_process": "^1.0.2",
@@ -15,6 +20,7 @@
     "ejs": "^2.6.1",
     "express": "~4.16.0",
     "express-generator": "^4.16.0",
+    "graphql": "^14.0.2",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "npx": "^10.2.0",

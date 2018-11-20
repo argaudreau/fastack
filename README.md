@@ -26,7 +26,8 @@ appeared at that given week. The Diff view in GitHub will show exactly what was 
 * [Week 5](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week5.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/6beb176e7b7814191c71e22753465d2fc7dd704a)
 * [Week 6](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week6.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/a0709c7799fd3a2d1fece1a1739df60b826087de)
 * [Week 7](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week7.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/b09845cfe0058f64216654e4be4515a84c75c53f)
-* [Week 8](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week8.txt) | (current master branch)
+* [Week 8](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week8.txt) | [GitHub Archive](https://github.com/argaudreau/fastack/tree/9fd2dafbcc977c35828ff0413277edb028fb0886)
+* [Week 9](https://github.com/argaudreau/fastack/tree/master/docs/progress_reports/week9.txt) | (current repo view)
 
 
 ## Easy?
