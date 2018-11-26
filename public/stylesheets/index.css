@@ -182,6 +182,6 @@ input:focus {
   white-space: pre;
 }
 
-.indent {
-  margin-left: 10px;
+.error {
+  color: #FF0000;
 }

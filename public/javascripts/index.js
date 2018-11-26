@@ -4,6 +4,7 @@ $(document).ready(function() {
     initSockets();
     initScrollToBottom();
     initAnimations();
+    initFormValidation();
 
     $('#generate-button').click(generate);
 });
@@ -74,9 +75,11 @@ function initAnimations() {
     // Button on clicks
     $('#button-begin').click(function() { animateScroll('#step1'); });
     $('#button-step1-next').click(function() {
-        let framework = $('input:radio[name ="framework"]:checked').val();
-        showFeatures(framework);
-        animateScroll('#step2');
+        if ($('#form-step1').valid()) {
+            let framework = $('input:radio[name ="framework"]:checked').val();
+            showFeatures(framework);
+            animateScroll('#step2');
+        }
     });
     $('#button-step2-back').click(function() { animateScroll('#step1') });
     $('#button-step2-next').click(function() { animateScroll('#step3') });
@@ -154,6 +157,41 @@ function showFeatures(framework) {
     }
 }
 
+function initFormValidation() {
+    $('#form-step1').validate({
+        rules: {
+            projectName: {
+                required: true,
+                maxlength: 20
+            },
+            framework: {
+                required: true,
+            }
+        },
+        messages: {
+            projectName: {
+                required: "You must specify a project name.",
+                maxlength: "Project name can't be greater than 20 characters long."
+            },
+            framework: {
+                required: "You must select a framework."
+            }
+        },
+        errorElement: 'div',
+        errorPlacement: function(error, element) {
+            let placement = $(element).data('error');
+            console.log(error);
+            if (placement) {
+                $(placement).append(error);
+            } else if (error[0].id === 'framework-error') {
+                $('.framework-group').after(error.insertAfter(element));
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+}
+
 function getFeatures(framework) {
     switch (framework) {
         case 'angular':
@@ -191,7 +229,7 @@ function generate() {
     $('#output').empty();
     $('#status').html('Generating your application...');
     $('#console-icon').addClass('console-spinner');
-    let name = $('#name').val();
+    let name = $('#projectName').val();
     let framework = $('input:radio[name ="framework"]:checked').val();
     let features = getFeatures(framework);
     if (name && framework) socket.emit(framework + ' generate', { app_name: name, features: features });

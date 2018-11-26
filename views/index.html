@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <script type="application/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript" src="javascripts/jquery.validate.min.js"></script>
     <script type="application/javascript" src="/socket.io/socket.io.js"></script>
     <script type="application/javascript" src="javascripts/index.js"></script>
   </head>
@@ -22,34 +23,35 @@
     <div id="step1" class="step">
       <div class="card">
         <h1>Let's get started</h1>
-        <p><b>Enter a name for your project</b> (max 20 characters)</p>
-        <form action="">
-          <input id="name" type="text" title="Name" placeholder="Name" maxlength="20" style="width: 96%;">
+        <form id="form-step1" class="cmxform" method="get" action="">
+          <label for="projectName"><b>Enter a name for your project</b> (max 20 characters)</label>
+          <input id="projectName" name="projectName" type="text" title="Name" placeholder="Name" style="width: 96%;">
+          <div class="errorContainer"></div>
+          <p><b>Select a framework</b></p>
+          <div class="framework-group">
+            <div class="framework-group-option">
+              <img class="framework-image" src="images/angular.png"><br>
+              Angular 6+<br>
+              <input type="radio" name="framework" value="angular" title="angular">
+            </div>
+            <div class="framework-group-option">
+              <img class="framework-image" src="images/nodejs.jpg"><br>
+              NodeJS & Express <br>
+              <input type="radio" name="framework" value="node" title="node">
+            </div>
+            <div class="framework-group-option">
+              <img class="framework-image" src="images/react.png"><br>
+              React <br>
+              <input type="radio" name="framework" value="react" title="react">
+            </div>
+            <div class="framework-group-option">
+              <img class="framework-image" src="images/vue-js.png"><br>
+              Vue <br>
+              <input type="radio" name="framework" value="vue" title="vue">
+            </div>
+          </div>
         </form>
-        <p><b>Select a framework</b></p>
-        <form action="" class="framework-group">
-          <div class="framework-group-option">
-            <img class="framework-image" src="images/angular.png"><br>
-            Angular 6+<br>
-            <input type="radio" name="framework" value="angular" title="angular">
-          </div>
-          <div class="framework-group-option">
-            <img class="framework-image" src="images/nodejs.jpg"><br>
-            NodeJS & Express <br>
-            <input type="radio" name="framework" value="node" title="node">
-          </div>
-          <div class="framework-group-option">
-            <img class="framework-image" src="images/react.png"><br>
-            React <br>
-            <input type="radio" name="framework" value="react" title="react">
-          </div>
-          <div class="framework-group-option">
-            <img class="framework-image" src="images/vue-js.png"><br>
-            Vue <br>
-            <input type="radio" name="framework" value="vue" title="vue">
-          </div>
-        </form>
-        <button id="button-step1-next" class="btn btn-center">next</button>
+        <button id="button-step1-next" class="btn btn-center submit" type="submit">next</button>
       </div>
     </div>
     <div id="step2" class="step">

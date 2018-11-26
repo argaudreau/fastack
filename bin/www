@@ -7,7 +7,6 @@ let io = require('socket.io')(server);
 let spawn = require('child_process').spawn;
 let fs = require('fs');
 let archiver = require('archiver');
-let rimraf = require('rimraf');
 
 const CONSOLE_BREAK = '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~';
 
@@ -154,15 +153,6 @@ function zipArchive(name, source) {
 }
 
 function emitLineBreak() { io.emit('generate data', { type: 'data', data: CONSOLE_BREAK }); }
-
-function removeFiles(payload) {
-    console.log('Removing files', payload.name, payload.name + '.zip');
-    rimraf('./public/temp/' + payload.name, function() {
-        rimraf('./public/temp/' + payload.name + '.zip', function() {
-            console.log('Done deleting');
-        });
-    });
-}
 
 function normalizePort(val) {
   let port = parseInt(val, 10);

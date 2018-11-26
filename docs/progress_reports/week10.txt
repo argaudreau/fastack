@@ -1,0 +1,16 @@
+Week 10 Progress Report
+(11/20/18 - 11/27/18)
+
+This week I added input validation to the first step, and I
+added a script to delete all generated files in the temp
+directory every 15 minutes. That script will be handled by
+a cron job.
+
+I used JQuery Validation plugin to handle the validation.
+I only needed to add this to the first step because as of
+now those are the only fields required. Step 2 is all optional
+configurations, but the ability to add them later on down the
+road is still there.
+
+Next week I will try to add more feature options to the other
+frameworks.
