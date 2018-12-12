@@ -1,0 +1,30 @@
+REPORT -- fastack
+Adam Gaudreau
+
+*NOTE*: Please view the presentation in the docs/ folder to see a lot of the ins and outs of the app I built.
+
+WHAT IT IS
+fastack is an easy way for anyone to generate a new web stack project in just a few clicks. It is a web application
+build on node.
+
+Users no longer have to look at the documentation for CLIs for their framework of choice. fastack provides all those
+capabilities with a few checkboxes, and allows the user to not only download the project template, but also see how
+it's being generated server side via the terminal displayed on the page.
+
+WHAT I DID
+I was able to implement the generation of all 4 frameworks I intended, and I was able to add configurable options for
+most of them. For angular, I was also able to add a feature (Angular Material), but the process of doing that showed me
+that it's going to take a long time to implement the other features for the other frameworks.
+
+That being said, I was able to implement a web socket-like interface instead of using an API. This allowed for extremely
+fast communication between front-end and server. Plus, I didn't really need an API.
+
+On top of that, I created custom UI elements and used no other UI frameworks.
+
+RETROSPECTIVE
+If given more time, I would've been able to add more features to the frameworks. I've shown that the platform is there
+to do so, but each individual feature takes a lot of time because I have to add and edit files line-by-line
+programmatically, which takes a lot of time to debug and go through.
+
+Other than that, I'm pretty pleased with how the project came out, and if polished enough, it could be useful to some
+people.

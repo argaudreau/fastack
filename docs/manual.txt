@@ -1,0 +1,14 @@
+MANUAL
+
+Pre-requisites
+- You need NPM installed.
+
+How to run
+1. Clone the repo to a local directory.
+2. 'cd' into the directory via terminal.
+3. Run 'npm install' to install dependencies.
+4. Run 'npm start' to start the server, and navigate to 'localhost:3000' in your web browser.
+
+Documentation
+For all appropriate documentation, look at the docs/ folder you've probably already found
+since you needed to open that to get here.

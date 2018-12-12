@@ -12,6 +12,10 @@ With fastack, you'll never have to go through that extensive setup process again
 
 Choose your framework, add the features you need, download the template. Cool!
 
+# Manual and Report
+* [Manual](https://github.com/argaudreau/fastack/tree/master/docs/manual.txt)
+* [Report](https://github.com/argaudreau/fastack/tree/master/docs/reports.txt)
+
 ## WebLab Link
 Please click [HERE](http://weblab.cs.uml.edu:3003) to view the project live on WebLab. If it is
 not running, or it is throwing an error, email me at adam_gaudreau AT student DOT uml DOT edu.
